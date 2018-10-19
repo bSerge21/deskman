@@ -1,0 +1,32 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = dsk2.exe keyhook.dll engi7.bpl duts.bpl claun.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+dsk2.exe: dsk2.dpr
+  $(DCC)
+
+keyhook.dll: keyhook\keyhook.dpr
+  $(DCC)
+
+engi7.bpl: ..\engi\engi7.dpk
+  $(DCC)
+
+duts.bpl: ..\engi\duts\duts.dpk
+  $(DCC)
+
+claun.exe: ..\claun\claun.dpr
+  $(DCC)
+
+
